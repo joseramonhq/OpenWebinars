@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML Modificación con JavaScript</title>
+	<style>
+		/* Estilos CSS para darle formato */
+		.container {
+			width: 80%;
+			margin: 0 auto;
+			padding: 20px;
+			border: 2px solid #333;
+			border-radius: 10px;
+			background-color: #f0f0f0;
+		}
+
+		.box {
+			min-width: 100px;
+			max-width: 200px;
+			flex: content;
+			background-color: #ffcc00;
+			border: 2px solid #333;
+			border-radius: 10px;
+			margin: 20px;
+			display: inline-block;
+			text-align: center;
+			line-height: 100px;
+			font-size: 24px;
+			font-weight: bold;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Modificación de Elementos HTML con JavaScript</h1>
+		<button id="button">Cambiar Contenido</button>
+	</div>
+
+	<script>
+		class Modifica {
+			static num = 1;
+
+			constructor() {
+				let boton = document.querySelector("button");
+
+				boton.addEventListener("click",
+
+					() => {
+						let div = document.createElement("div");
+						div.setAttribute("class", "box");
+						div.textContent = Modifica.num++;
+						document.querySelector(".container").appendChild(div);
+
+
+					}
+				)
+			}
+
+		}
+
+		let modifica = new Modifica();
+		modifica.cambiarTextoDeCubo(Math.floor(Math.random() * 3));
+
+	</script>
+</body>
+
+</html>

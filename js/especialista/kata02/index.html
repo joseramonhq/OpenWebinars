@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Code Kata Ajax</title>
+</head>
+
+<body>
+	<center>
+		<button class="request" type="button">Generate new one</button>
+		<div class="activity"></div>
+	</center>
+	<script>
+		/*Declaración de Clase:
+	
+				class Actividad {define una clase llamada Actividad que encapsula la funcionalidad para obtener y mostrar una actividad aleatoria de la API de Bored (API del Aburrimiento).*/
+		class Activity {
+			/*Propiedad Privada:
+		
+				#actividad; declara una propiedad privada llamada #actividad usando el símbolo #, indicando que solo es accesible dentro de los métodos de la clase. Esta propiedad guardará los datos de la actividad recuperada.*/
+			#activity;
+			/*Constructor:
+	
+				constructor() inicializa la instancia de Actividad.
+				const boton = document.querySelector('.request');: Selecciona el elemento HTML con la clase request, asumiendo que representa un botón que activa la obtención de la actividad.
+				const contenedorActividad = document.querySelector('.activity');: Selecciona el elemento HTML con la clase activity, asumiendo que es el contenedor donde se mostrará la actividad obtenida.
+				boton.addEventListener('click', () => {: Adjunta un detector de eventos al evento click del botón seleccionado.
+				// Realizar la solicitud HTTP: Este comentario indica que el siguiente bloque de código se encarga de realizar una solicitud HTTP a la API de Bored.*/
+
+			constructor() {
+				// Seleccionar el botón y el div de la actividad
+				const button = document.querySelector(".request");
+				const activityDiv = document.querySelector(".activity");
+
+				// Agregar un event listener para el clic en el botón
+
+				button.addEventListener("click", () => {
+					// Realizar la solicitud HTTP
+					/*
+					Creación de la Solicitud HTTP:
+		
+					const http = new XMLHttpRequest();: Crea una instancia del objeto XMLHttpRequest, que se utiliza para realizar solicitudes HTTP.
+					http.open("GET", "http://www.boredapi.com/api/activity/", true);: Inicializa la solicitud HTTP.
+					GET: Especifica el método HTTP como GET, que es apropiado para recuperar datos de la API.
+					"http://www.boredapi.com/api/activity/": Define la URL del punto final de la API desde el cual se obtendrán los datos de la actividad.
+					true: Indica que la solicitud debe ser asíncrona.*/
+					const http = new XMLHttpRequest();
+					http.open("GET", "http://www.boredapi.com/api/activity/", true);
+					/*Manejo de la Respuesta:
+	
+							http.onreadystatechange = () => {: Define un detector de eventos para el evento onreadystatechange del objeto de solicitud HTTP.
+				if (http.readyState === 4 && http.status === 200) {: Comprueba si la solicitud se ha completado (readyState === 4) y si la respuesta es exitosa (status === 200).
+				// Actualizar el contenido del contenedor con la actividad generada: Este comentario indica que el siguiente bloque de código se encarga de actualizar la pantalla con la actividad recuperada.
+				this.#actividad = JSON.parse(http.responseText).activity;: Analiza el texto de respuesta JSON en un objeto JavaScript y extrae la propiedad activity, almacenándola en la propiedad privada #actividad.
+				contenedorActividad.textContent = this.#actividad;: Actualiza el contenido de texto del contenedor de actividad seleccionado (contenedorActividad) con los datos de la actividad recuperada de la propiedad #actividad.
+				*/
+
+					http.onreadystatechange = () => {
+						if (http.readyState === 4 && http.status === 200) {
+							// Actualizar el contenido del div con la actividad generada
+							this.#activity = JSON.parse(http.responseText).activity;
+							activityDiv.textContent = this.#activity;
+							console.log(JSON.parse(http.response).activity);
+						}
+					};
+					/*Envío de la Solicitud:
+											http.send();
+											Envía la solicitud HTTP a la API de Bored.*/
+					http.send();
+				});
+			}
+		}
+
+		/*const actividad = new Actividad();: Crea una nueva instancia de la clase Actividad, lo que activa la funcionalidad descrita anteriormente. Esto significa que al ejecutar este código, la clase Actividad estará lista para responder al clic en el botón seleccionado y mostrar una actividad aleatoria de la API de Bored.*/
+		const activity = new Activity();
+
+		/*	Enlaces Útiles:
+  
+			  https://www.boredapi.com/: La API de Bored (API del Aburrimiento) que proporciona actividades aleatorias.
+			  https://www.w3schools.com/jsref/met_document_queryselector.asp: Documentación sobre querySelector en W3Schools.
+			  https://www.w3schools.com/js/js_htmldom_eventlistener.asp: Documentación sobre addEventListener en W3Schools.
+			  https://www.w3schools.com/js/js_ajax_http.asp: Documentación sobre XMLHttpRequest en W3Schools.
+			  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse: Documentación sobre JSON.parse en MDN Web Docs.*/
+	</script>
+</body>
+
+</html>

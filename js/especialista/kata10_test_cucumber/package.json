@@ -1,0 +1,15 @@
+{
+  "name": "kata10_test_cucumber",
+  "version": "1.0.0",
+  "description": "● Instalación de cucumber ○ `npm install cucumber - -save-dev` ● Creamos los directorios ○ /features y /features/support ● Escribimos los tests ○ [nombre_archivo].feature y [nombre_archivo].js ● Ejecutamos los tests ○ `npx cucumber-js`",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber": "^6.0.7"
+  }
+}

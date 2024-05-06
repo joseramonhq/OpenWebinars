@@ -1,0 +1,15 @@
+{
+  "name": "kata09_test_unitarios_mochajs",
+  "version": "1.0.0",
+  "description": "● Instalamos MochaJS ○ npm install - -save-dev mocha ● Creamos el directorio para pruebas unitarias ○ /test ● Creamos los tests ○ [nombre_archivo].js ● Ejecutamos los tests ○ npx mocha",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.4.0"
+  }
+}
